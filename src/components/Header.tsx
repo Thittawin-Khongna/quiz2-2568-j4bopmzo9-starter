@@ -7,6 +7,7 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconSun, IconMoon } from "@tabler/icons-react";
+import FoodIcon from "../assets/FoodIcon.png";
 
 interface HeaderComponentProps {
   opened: boolean;
@@ -17,12 +18,10 @@ export default function HeaderComponent({
   opened,
   toggle,
 }: HeaderComponentProps) {
-
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
   const isDark = colorScheme === "dark";
   const isMobile = useMediaQuery("(max-width: 768px)");
-  
+
   return (
     <Group p="md" justify="space-between">
       <Group>
@@ -33,6 +32,20 @@ export default function HeaderComponent({
             aria-label="Toggle navigation"
           />
         )}
+        {/* เพิ่ม FoodIcon*/}
+        <ActionIcon
+          variant="filled"
+          color={isDark ? "yellow" : "blue"}
+          onClick={toggleColorScheme}
+          size="lg"
+          aria-label={isDark ? "Light mode" : "Dark mode"}
+        >
+          <img
+            src={FoodIcon}
+            alt="Food Icon"
+            style={{ width: 28, height: 28 }}
+          />
+        </ActionIcon>
         <Text
           size="xl"
           fw={900}
